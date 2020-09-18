@@ -46,4 +46,20 @@ class ProductController extends AbstractController
             'products' => $products,
         ]);
     }
+
+    /**
+     * @Route("/product/{id}", name="product_show")
+     */
+    public function show($id, ProductRepository $repository)
+    {
+        $product = $repository->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render('product/show.html.twig', [
+            'product' => $product,
+        ]);
+    }
 }

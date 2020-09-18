@@ -13,6 +13,10 @@
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p>{{ product.description }}</p>
                     <p>{{ product.price / 100 }} €</p>
+
+                    <a href="{{ path('product_show', {id: product.id})}}" class="btn btn-primary">
+                        Voir le produit
+                    </a>
                 </div>
             </div>
         </div>
