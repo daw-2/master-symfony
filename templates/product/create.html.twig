@@ -2,12 +2,18 @@
 
 {% block body %}
 <div class="container">
-    <h1>Créer un produit</h1>
+    {% if edit %}
+        <h1>Modifier un produit</h1>
+    {% else %}
+        <h1>Créer un produit</h1>
+    {% endif %}
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
 
-        <button class="btn btn-primary" formnovalidate>Créer</button>
+        <button class="btn btn-primary" formnovalidate>
+            {{ edit ? 'Modifier' : 'Créer' }}
+        </button>
     {{ form_end(form) }}
 </div>
 {% endblock %}
