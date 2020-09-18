@@ -16,10 +16,10 @@ class ProductController extends AbstractController
      * @Route("/product/create", name="product_create")
      * 
      * UPLOAD :
-     * - Ajouter un champ de type file (enctype)
-     * - Prévoir un dossier pour uploader les fichiers
-     * - Stocker le chemin de l'image dans la BDD
-     * - Faire l'upload en PHP et la vérification
+     * - Ajouter un champ de type file (enctype) X
+     * - Prévoir un dossier pour uploader les fichiers X
+     * - Stocker le chemin de l'image dans la BDD (?)
+     * - Faire l'upload en PHP X et la vérification (?)
      */
     public function create(Request $request, EntityManagerInterface $entityManager)
     {
@@ -29,6 +29,19 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // On récupère l'image pour l'upload
+            $image = $form->get('image')->getData();
+
+            // On déplace l'image uploadée vers un dossier de notre projet
+            // On génére un nom de fichier aléatoire
+            $image->move(
+                $this->getParameter('kernel.project_dir').'/public/uploads',
+                $name = uniqid().'.'.$image->guessExtension()
+            );
+
+            // @todo: Ajouter une propriété image dans la class Product
+            // $product->setImage($name);
+
             $entityManager->persist($product); // On persiste l'objet
             $entityManager->flush(); // On exécute la requête (INSERT...)
         }
