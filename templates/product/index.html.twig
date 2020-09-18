@@ -1,9 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
+<div class="container">
+    <h1>Nos produits</h1>
 
-        <button class="btn btn-primary" formnovalidate>Créer</button>
-    {{ form_end(form) }}
+    <div class="row">
+        {% for product in products %}
+        <div class="col-3">
+            <div class="card shadow">
+                <img class="card-img" src="">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p>{{ product.description }}</p>
+                    <p>{{ product.price / 100 }} €</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

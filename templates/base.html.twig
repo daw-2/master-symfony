@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Master{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         {% endblock %}
@@ -16,7 +16,7 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <div class="navbar-nav">
                     <a class="nav-link" href="#">Accueil</a>
-                    <a class="nav-link" href="#">Produits</a>
+                    <a class="nav-link" href="{{ path('product_index') }}">Produits</a>
                     <a class="nav-link" href="{{ path('product_create') }}">Créer un produit</a>
                 </div>
             </div>
