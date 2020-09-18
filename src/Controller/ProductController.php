@@ -50,13 +50,13 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/{id}", name="product_show")
      */
-    public function show($id, ProductRepository $repository)
+    public function show(Product $product, $id, ProductRepository $repository)
     {
-        $product = $repository->find($id);
+        //$product = $repository->find($id);
 
-        if (!$product) {
-            throw $this->createNotFoundException();
-        }
+        //if (!$product) {
+        //    throw $this->createNotFoundException();
+        //}
 
         return $this->render('product/show.html.twig', [
             'product' => $product,
