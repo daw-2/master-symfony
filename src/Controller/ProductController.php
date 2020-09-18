@@ -14,6 +14,12 @@ class ProductController extends AbstractController
 {
     /**
      * @Route("/product/create", name="product_create")
+     * 
+     * UPLOAD :
+     * - Ajouter un champ de type file (enctype)
+     * - Prévoir un dossier pour uploader les fichiers
+     * - Stocker le chemin de l'image dans la BDD
+     * - Faire l'upload en PHP et la vérification
      */
     public function create(Request $request, EntityManagerInterface $entityManager)
     {

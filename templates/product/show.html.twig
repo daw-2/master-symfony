@@ -14,8 +14,10 @@
             <p>{{ product.price / 100 }} €</p>
 
             <a href="{{ path('product_edit', {id: product.id}) }}" class="btn btn-info">Modifier</a>
+            <!-- Lien de suppression sans CSRF -->
             <a href="{{ path('product_delete', {id: product.id}) }}" class="btn btn-danger">Supprimer</a>
 
+            <!-- Lien de suppression avec CSRF -->
             <form action="{{ path('product_delete', {id: product.id}) }}" method="POST">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token('delete-' ~ product.id) }}">
                 <button class="btn btn-danger">Supprimer</button>
