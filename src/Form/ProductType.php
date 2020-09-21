@@ -32,6 +32,9 @@ class ProductType extends AbstractType
                 ]
             ])
             ->add('description')
+            ->add('category', null, [
+                'choice_label' => 'name'
+            ])
             ->add('price', MoneyType::class, [
                 'divisor' => 100, // Dans le formulaire, on saisit 99.99 mais on prend comme valeur 9999
             ])

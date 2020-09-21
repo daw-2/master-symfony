@@ -16,6 +16,8 @@
                     <p>{{ product.description }}</p>
                     <p>{{ product.price / 100 }} €</p>
 
+                    <p>Catégorie: {{ product.category.name }}</p>
+
                     <a href="{{ path('product_show', {id: product.id})}}" class="btn btn-primary">
                         Voir le produit
                     </a>

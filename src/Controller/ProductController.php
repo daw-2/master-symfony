@@ -32,16 +32,19 @@ class ProductController extends AbstractController
             // On récupère l'image pour l'upload
             $image = $form->get('image')->getData();
 
-            // On déplace l'image uploadée vers un dossier de notre projet
-            // On génére un nom de fichier aléatoire
-            $fileName = uniqid().'.'.$image->guessExtension();
-            $image->move(
-                $this->getParameter('kernel.project_dir').'/public/uploads',
-                $fileName
-            );
+            // On vérifie qu'une image est uploadée...
+            if ($image !== null) {
+                // On déplace l'image uploadée vers un dossier de notre projet
+                // On génére un nom de fichier aléatoire
+                $fileName = uniqid().'.'.$image->guessExtension();
+                $image->move(
+                    $this->getParameter('kernel.project_dir').'/public/uploads',
+                    $fileName
+                );
 
-            // @todo: Ajouter une propriété image dans la class Product
-            $product->setImage($fileName);
+                // @todo: Ajouter une propriété image dans la class Product
+                $product->setImage($fileName);
+            }
 
             $entityManager->persist($product); // On persiste l'objet
             $entityManager->flush(); // On exécute la requête (INSERT...)
@@ -78,6 +81,8 @@ class ProductController extends AbstractController
         //if (!$product) {
         //    throw $this->createNotFoundException();
         //}
+
+        dump($product->getCategory()->getName());
 
         return $this->render('product/show.html.twig', [
             'product' => $product,

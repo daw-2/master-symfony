@@ -47,3 +47,12 @@ Méthode 2 (avec migration) :
 ```bash
 php bin/console doctrine:migrations:migrate
 ```
+
+Pour cleaner les migrations, si c'est nécessaire, on supprimer le contenu du dossier ```migrations/``` et on lance les commandes suivantes :
+
+```bash
+php bin/console doctrine:database:drop --force
+php bin/console doctrine:database:create
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+```

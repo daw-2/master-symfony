@@ -12,6 +12,7 @@
             <p>{{ product.description }}</p>
 
             <p>{{ product.price / 100 }} €</p>
+            <p>Catégorie: {{ product.category.name }}</p>
 
             <a href="{{ path('product_edit', {id: product.id}) }}" class="btn btn-info">Modifier</a>
             <!-- Lien de suppression sans CSRF -->
