@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class ProductType extends AbstractType
 {
@@ -18,7 +19,17 @@ class ProductType extends AbstractType
             ->add('image', FileType::class, [
                 'mapped' => false, // On ne lie pas le champ à la BDD
                 // @todo: validation d'une image
-                // 10 Mo max et uniquement jpg, png et gif
+                // 10 Mo max et uniquement jpg, png et gif,
+                'constraints' => [
+                    new File([
+                        'mimeTypes' => [
+                            'image/gif',
+                            'image/png',
+                            'image/jpeg'
+                        ],
+                        'maxSize' => '10m',
+                    ]),
+                ]
             ])
             ->add('description')
             ->add('price', MoneyType::class, [

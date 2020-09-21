@@ -8,7 +8,9 @@
         {% for product in products %}
         <div class="col-3">
             <div class="card shadow">
-                <img class="card-img" src="">
+                {% if product.image %}
+                <img class="card-img" src="{{ asset('uploads/' ~ product.image) }}">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p>{{ product.description }}</p>
