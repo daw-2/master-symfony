@@ -18,6 +18,10 @@
 
                     <p>Catégorie: {{ product.category.name }}</p>
 
+                    {% if not product.tags.empty %}
+                        <p>Tags: {{ product.tags | join(', ') }}</p>
+                    {% endif %}
+
                     <a href="{{ path('product_show', {id: product.id})}}" class="btn btn-primary">
                         Voir le produit
                     </a>
