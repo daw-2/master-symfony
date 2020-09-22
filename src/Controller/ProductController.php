@@ -62,7 +62,7 @@ class ProductController extends AbstractController
     public function index(ProductRepository $repository)
     {
         // $this->getDoctrine()->getRepository(Product::class)->findAll();
-        $products = $repository->findAll();
+        $products = $repository->findAllProducts();
 
         dump($products);
 

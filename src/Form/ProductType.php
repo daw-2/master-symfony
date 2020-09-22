@@ -33,7 +33,13 @@ class ProductType extends AbstractType
             ])
             ->add('description')
             ->add('category', null, [
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                // 'expanded' => true,
+                // 'multiple' => true,
+            ])
+            ->add('tags', null, [
+                'expanded' => true, // Permet d'afficher des checkboxes
+                // 'multiple' => true,
             ])
             ->add('price', MoneyType::class, [
                 'divisor' => 100, // Dans le formulaire, on saisit 99.99 mais on prend comme valeur 9999
