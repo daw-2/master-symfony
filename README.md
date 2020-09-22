@@ -48,6 +48,12 @@ Méthode 2 (avec migration) :
 php bin/console doctrine:migrations:migrate
 ```
 
+On peut lancer les fixtures :
+
+```bash
+php bin/console doctrine:fixtures:load
+```
+
 Pour cleaner les migrations, si c'est nécessaire, on supprimer le contenu du dossier ```migrations/``` et on lance les commandes suivantes :
 
 ```bash
