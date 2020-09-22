@@ -23,6 +23,14 @@ class UserFixtures extends Fixture
         $user->setPassword($this->encoder->encodePassword($user, 'daddy'));
 
         $manager->persist($user);
+
+        $user = new User();
+        $user->setEmail('matthieu@boxydev.com');
+        $user->setRoles(['ROLE_ADMIN']);
+        $user->setPassword($this->encoder->encodePassword($user, 'test'));
+
+        $manager->persist($user);
+
         $manager->flush();
     }
 }

@@ -17,7 +17,9 @@
                 <div class="navbar-nav">
                     <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                     <a class="nav-link" href="{{ path('product_index') }}">Produits</a>
-                    <a class="nav-link" href="{{ path('product_create') }}">Créer un produit</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="nav-link" href="{{ path('product_create') }}">Créer un produit</a>
+                    {% endif %}
                 </div>
 
                 <div class="navbar-nav ml-auto">
