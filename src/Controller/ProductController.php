@@ -46,6 +46,8 @@ class ProductController extends AbstractController
                 $product->setImage($fileName);
             }
 
+            $product->setUser($this->getUser());
+
             $entityManager->persist($product); // On persiste l'objet
             $entityManager->flush(); // On exécute la requête (INSERT...)
         }

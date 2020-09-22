@@ -37,6 +37,7 @@ class AppFixtures extends Fixture
             $product->setDescription($faker->text(50));
             $product->setPrice($faker->numberBetween(10, 1000) * 100);
             $product->setCategory($this->getReference('category-'.rand(0, 3)));
+            $product->setUser($this->getReference('user-0'));
 
             $tagCount = rand(0, 5);
             for ($j = 0; $j < $tagCount; ++$j) {

@@ -28,6 +28,7 @@ class UserFixtures extends Fixture
         $user->setEmail('matthieu@boxydev.com');
         $user->setRoles(['ROLE_ADMIN']);
         $user->setPassword($this->encoder->encodePassword($user, 'test'));
+        $this->addReference('user-0', $user);
 
         $manager->persist($user);
 
