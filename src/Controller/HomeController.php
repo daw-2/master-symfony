@@ -19,9 +19,11 @@ class HomeController extends AbstractController
         // Récupèrer les 4 produits plus chers qu'un certain prix
         $expensiveProducts = $repository->findAllGreatherThanPrice($priceFilter);
         // Récupèrer 4 produits de la catégorie Smartphone
+        $productsFromCategory = $repository->findAllFromCategory('Smartphone');
 
         return $this->render('home/index.html.twig', [
             'expensive_products' => $expensiveProducts,
+            'products_from_category' => $productsFromCategory,
             'price_filter' => $priceFilter,
         ]);
     }

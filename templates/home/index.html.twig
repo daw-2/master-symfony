@@ -33,5 +33,19 @@
         </div>
     {% endfor %}
     </div>
+
+    <h2>Les produits Smartphone</h2>
+    <div class="row">
+    {% for product in products_from_category %}
+        <div class="col-3">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p>{{ product.price / 100 }} €</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
 </div>
 {% endblock %}
