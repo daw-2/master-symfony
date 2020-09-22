@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+
+    <form action="{{ path('home') }}">
+        <h2>
+            Les produits plus chers que
+            <select name="price">
+                {% for i in range(100, 1000, 100) %}
+                    <option value="{{ i }}"
+                        {{ price_filter == i ? 'selected="selected"' }}
+                    >
+                        {{ i }}
+                    </option>
+                {% endfor %}
+            </select>
+            euros
+
+            <button class="btn">Filtrer</button>
+        </h2>
+    </form> 
+
+    <div class="row">
+    {% for product in expensive_products %}
+        <div class="col-3">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p>{{ product.price / 100 }} €</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

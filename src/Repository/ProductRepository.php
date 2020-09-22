@@ -29,6 +29,18 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult(); // fetchAll()
     }
 
+    public function findAllGreatherThanPrice($price)
+    {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->where('p.price > :price') // WHERE price > 100
+            ->setParameter('price', $price * 100)
+            ->orderBy('p.price', 'ASC')
+            ->setMaxResults(4) // LIMIT 4
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */
