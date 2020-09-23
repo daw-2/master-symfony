@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class ProductController extends AbstractController
 {
@@ -46,6 +47,7 @@ class ProductController extends AbstractController
                 $product->setImage($fileName);
             }
 
+            // J'associe l'utilisateur connecté au produit
             $product->setUser($this->getUser());
 
             $entityManager->persist($product); // On persiste l'objet
@@ -93,6 +95,7 @@ class ProductController extends AbstractController
 
     /**
      * @Route("/product/edit/{id}", name="product_edit")
+     * @Security("user === product.getUser()")
      */
     public function edit(Product $product, Request $request, EntityManagerInterface $entityManager)
     {
@@ -114,6 +117,7 @@ class ProductController extends AbstractController
 
     /**
      * @Route("/product/delete/{id}", name="product_delete")
+     * @Security("user === product.getUser()")
      */
     public function delete(Request $request, Product $product, EntityManagerInterface $entityManager)
     {

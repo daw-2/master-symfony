@@ -6,11 +6,17 @@ use App\Entity\Category;
 use App\Entity\Product;
 use App\Entity\Tag;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-class AppFixtures extends Fixture
+class AppFixtures extends Fixture implements DependentFixtureInterface
 {
+    public function getDependencies()
+    {
+        return [UserFixtures::class];
+    }
+
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
